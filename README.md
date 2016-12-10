@@ -1,3 +1,2 @@
 # basic-ui
-Let's make some edits on a branch!
-branch5153 deconflicted
+Start with simple HTML
