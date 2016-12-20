@@ -1,9 +1,3 @@
-describe("Tautology", function() {
-    it("is always true", function() {
-        expect(1==1);
-    });
-});
-
 describe("Deck", function() {
     it("returns the top card", function() {
         var deck = new Deck();
@@ -34,10 +28,5 @@ describe("Pile", function() {
 
 
 
-//describe("Hello world", function() {
-//  it("says hello", function() {
-//    expect(helloWorld()).toEqual("Hello world!");
-//  });
-//});
 
 

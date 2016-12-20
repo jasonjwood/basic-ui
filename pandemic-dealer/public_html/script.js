@@ -13,14 +13,14 @@ class Pile {
     }
     
     remove_from_top(card) {
-        this.cards.splice(0, 1);
+        this.cards.splice(this.cards.length-1, 1);
     }
     
     peek_at_top() {
-        if (this.cards.length == 0) {
+        if (this.cards.length === 0) {
             return null;
         }
-        return this.cards[0];
+        return this.cards[this.cards.length-1];
     }
 }
 
