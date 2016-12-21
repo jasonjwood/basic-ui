@@ -30,6 +30,8 @@ class Pile {
     
     remove_from_top() {
         var card = this.peek_at_top();
+        if (!card) return null;
+        
         this.cards.splice(this.cards.length-1, 1);
         return card;
     }
@@ -51,13 +53,21 @@ class Pile {
 
 class Deck {
     constructor (cardsIn) {
-        this.cards = cardsIn;
-        this.piles = {};
+        this.piles = {}
+        this.piles["draw"] = new Pile(cardsIn)
+        this.piles["discard"] = new Pile()
     }
     
-    cards () {
-        return this.cards;
+    piles () {
+        return this.piles;
     }
-  
+    
+    draw_and_discard() {
+        var card = this.piles["draw"].remove_from_top();
+        this.piles["discard"].add_to_top(card);
+        return card;
+    }
+    
+    
 }
 	

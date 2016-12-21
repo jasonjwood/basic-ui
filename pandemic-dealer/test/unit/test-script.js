@@ -1,11 +1,16 @@
 describe("Deck", function() {
-    it("can expose its cards", function() {
-        var deck = new Deck(["a", "b", "c"]);
-        expect(deck.cards[0]).toEqual("a");
-        expect(deck.cards[1]).toEqual("b");
-        expect(deck.cards[2]).toEqual("c");
-    });
+    it("is created with draw and discard piles", function() {
+        var deck = new Deck(["a", "b", "c"])
+        expect(deck.piles["draw"].cards.length).toEqual(3);
+        expect(deck.piles["discard"].cards.length).toEqual(0);
+    })
     
+    it("can move cards from draw to discard", function() {
+        var deck = new Deck(["a", "b", "c"]);
+        expect(deck.draw_and_discard()).toEqual("c");
+        expect(deck.piles["draw"].cards.length).toEqual(2);
+        expect(deck.piles["discard"].cards.length).toEqual(1);
+    })
 });
 
 describe("Pile", function() {
