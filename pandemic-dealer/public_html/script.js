@@ -4,9 +4,18 @@ function reset() {
 
 
 class Pile {
-    constructor() {
-        this.cards = [];
+    constructor(cardsIn) {
+        if (!cardsIn) {
+            this.cards = [];
+        } else {
+            this.cards = cardsIn;
+        }
     }
+    
+    cards () {
+        return this.cards;
+    }
+    
     
     add_to_top(card) {
         this.cards.push(card);
@@ -25,20 +34,6 @@ class Pile {
         return card;
     }
     
-    
-}
-
-
-class Deck {
-    constructor () {
-        this.cards = ["a", "b", "c"];
-        this.piles = {};
-    }
-    
-    cards () {
-        return this.cards;
-    }
-    
     swap(l, x, y) {
         var b = l[x];
         l[x] = l[y];
@@ -51,5 +46,18 @@ class Deck {
             this.swap(this.cards, i, n);
         }
     }
+}
+
+
+class Deck {
+    constructor (cardsIn) {
+        this.cards = cardsIn;
+        this.piles = {};
+    }
+    
+    cards () {
+        return this.cards;
+    }
+  
 }
 	

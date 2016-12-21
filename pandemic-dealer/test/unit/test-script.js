@@ -1,28 +1,11 @@
 describe("Deck", function() {
     it("can expose its cards", function() {
-        var deck = new Deck();
+        var deck = new Deck(["a", "b", "c"]);
         expect(deck.cards[0]).toEqual("a");
         expect(deck.cards[1]).toEqual("b");
         expect(deck.cards[2]).toEqual("c");
     });
     
-    
-    it("can be shuffled", function() {
-        var deck = new Deck();
-        var orderings = {};
-       
-        for (var i=0; i<5000; i++) {
-            deck.shuffle();
-            var order = deck.cards[0] + deck.cards[1] + deck.cards[2];
-            if (!orderings[order]) {
-                orderings[order] = 1;
-            } else {
-                orderings[order] = orderings[order] + 1;
-            }
-        }
-        
-        expect(orderings["abc"]>400).toEqual(true);
-    });
 });
 
 describe("Pile", function() {
@@ -48,6 +31,22 @@ describe("Pile", function() {
         expect(pile.remove_from_top()).toEqual("b");
         expect(pile.remove_from_top()).toEqual("a");
         expect(pile.remove_from_top()).toBeNull();
+    });
+    it("can be shuffled", function() {
+        var pile = new Pile(["a", "b", "c"]);
+        var orderings = {};
+       
+        for (var i=0; i<5000; i++) {
+            pile.shuffle();
+            var order = pile.cards[0] + pile.cards[1] + pile.cards[2];
+            if (!orderings[order]) {
+                orderings[order] = 1;
+            } else {
+                orderings[order] = orderings[order] + 1;
+            }
+        }
+        
+        expect(orderings["abc"]>400).toEqual(true);
     });
 });
 
